@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Workouts</string>
+    <string name="Hello">Hello,</string>
+    <string name="askname">Type your first name</string>
+    <string name="u_name">Name</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">View Stats</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="go_to_calender">Calendar View</string>
+    <string name="go_to_graph">Graph View</string>
+    <string name="user_pro">\t\t\t\tProfile</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string name="title_activity_user_profile">\t\t\tProfile</string>
+    <string name="title_activity_workouts_list">\t\t\tWorkouts List</string>
+    <string name="title_activity_calander">\t\t\tCalendar View</string>
+    <string name="title_activity_graph">\t\t\tGraph View</string>
+
+    <string-array name="TITLES_OF_WORKOUTS">
+        <item>Abdominal Crunches</item>
+        <item>Arm Circles</item>
+        <item>Arm Raises</item>
+        <item>Backward Lunges</item>
+        <item>Bicycle Crunch</item>
+        <item>Bird Dog</item>
+        <item>Box Push Ups</item>
+        <item>Bridge</item>
+        <item>Burpees</item>
+        <item>Cobras</item>
+        <item>Plank</item>
+        <item>Push Ups</item>
+    </string-array>
+    <string name="title_activity_current_workout">CurrentWorkoutActivity</string>
+
+    <string-array name="DESCRIPTIONS_OF_WORKOUTS">
+        <item>Lie on your back with your knees bent and arms stretched forward.\n\nThen lift your body off the floor. and slowly return to original position.\n\nWorks on rectus abdominis muscles and the obliques.</item>
+        <item>Stand with your arms straight out to the sides at shoulder height.\n\nMove your arms in clockwise and then in anticlockwise circles at your own pace.\n\nThis works on the arms to make them stronger.</item>
+        <item>Stand on the floor with your arms extended straight forward at shoulder height.\n\nRaise your arms above your head.\n\nReturn and Repeat!</item>
+        <item>Stand with your feet shoulder width apart and your hands on your hips.\n\nStep a big step backward with your right leg and lower your body until your left thigh is parallel to the floor.\n\nReturn and Repeat.</item>
+        <item>Lie on the floor with your hands behind your ears. Raise your knees andclose your right elbow toward your left knees, then close your left elbow towards the right knee.\n\nThis makes your body flexible.</item>
+        <item>Start with your knees under your butt and hands under the shoulders.\n\nNow stretch your right leg and left arm at the same time.\n\nHold for 3 seconds and repeat with the other side.</item>
+        <item>Start with your knees under your butt and hands under the shoulders.\nBend your elbows and do a push-up.\nReturn and Repeat.\n\nStrengthens your arms.</item>
+        <item>Lie flat on the floor, lift your hips off the floor with your back straight and hold as long as you can.\n\nIt strengthens the lower back and glutes.</item>
+        <item>Stand with your feet shoulder width apart, then put your hands on the ground and kick your feet backward. Do a quick push up and then jump on.\n\nWorks on the whole body.</item>
+        <item>Lie down on your stomach and bend your elbows with your hands beneath your shoulders\n\nNow push your chest up off the ground as far as possible.\nReturn and repeat.\n\nMakes your back strong and flexible</item>
+        <item>Lie with your toes and forearms on the ground. Keep body straight and hold as long as you can.\n\nIt strengthens the abdomen, back and shoulders.</item>
+        <item>Lay prone on the ground with your arms supporting your body.\n\nKeep your body straight while raising and lowering your body with your arms.\n\nWorks on your chest, shoulders, triceps, back and legs.</item>
+    </string-array>
+
+    <string-array name="DATES">
+
+    </string-array>
+
+</resources>
