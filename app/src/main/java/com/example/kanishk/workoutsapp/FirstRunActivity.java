@@ -27,9 +27,6 @@ public class FirstRunActivity extends AppCompatActivity {
     int result;
     TextToSpeech speaker;
 
-    //public SharedPreferences prefs = getSharedPreferences("myprefs",Context.MODE_WORLD_WRITEABLE);
-    //SharedPreferences.Editor ed = prefs.edit();
-
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
 
@@ -70,7 +67,8 @@ public class FirstRunActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                mEditor.putString(getString(R.string.u_name),name_of_user.getText().toString()).apply();
+                mEditor.putString(getString(R.string.u_name),user_name);
+                mEditor.commit();
             }
         });
 

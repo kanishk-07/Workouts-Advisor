@@ -28,12 +28,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView Name;
-    public ArrayList<String> dates;
-    SharedPreferences datePrefs;
 
     //SQLiteDatabase myBase = this.openOrCreateDatabase("DATES",MODE_PRIVATE,null);
-
-    //String nm = FirstRunActivity.sp.getString("USERNAME","");  //////////////////////////
 
     SharedPreferences mPreferences;
 
@@ -108,36 +104,25 @@ public class MainActivity extends AppCompatActivity
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor mEditor = mPreferences.edit();
 
-        String name = "";
+        String name;
         name = mPreferences.getString(getString(R.string.u_name),"");
 //
         //name = FirstRunActivity.prefs.getString("USERNAME","");
 
         //name = getSharedPreferences("myPrefs", Context.MODE_WORLD_READABLE).getString("USERNAME","");
 
-        Name = (TextView)findViewById(R.id.textView2);////////////////////////////////////////////
+        Name = (TextView)findViewById(R.id.textView2);//////////////////////////////
 
-        //moveSharedPreferencesFrom(getApplicationContext() ,"InitialInfo");
-        //String s = getSharedPreferences("InitialInfo",MODE_PRIVATE).getString("USERNAME",null);
-//        if (FirstRunActivity.user_name == null) {
-//            Name.setText("Hey,");
-//        }else {
-//            Name.setText("Hey " + FirstRunActivity.user_name + ",");
-//        }
-
-        String naam = "Hey "+name+",";
+        //String naam = "Hey "+name+",";
+        String naam = "Hey ".concat(name).concat(",");
         Name.setText(naam);
 
         int prevDay = getSharedPreferences("Streak", MODE_PRIVATE).getInt("InstallationDay", 0);
         int prevYear = getSharedPreferences("Streak", MODE_PRIVATE).getInt("InstallationYear", 0);
-        //int prevMonth = getSharedPreferences("Streak", MODE_PRIVATE).getInt("InstallationMonth", 0);
 
         int Day = calendar.get(Calendar.DAY_OF_YEAR);
-        //int Month = calendar.get(Calendar.MONTH);
         int Year = calendar.get(Calendar.YEAR) + 1900;
-
         //myBase.execSQL("INSERT INTO dates (day,month,year) VALUES ()");
-
         int streak = getSharedPreferences("Streak", MODE_PRIVATE).getInt("AcStreak", 0);
         if(Day == prevDay && Year == prevYear) { // && Month == prevMonth) {
 
@@ -160,7 +145,6 @@ public class MainActivity extends AppCompatActivity
 
 
         getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("InstallationDay", Day).apply();
-        //getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("InstallationMonth", Day).apply();
         getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("InstallationYear", Year).apply();
         getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("AcStreak", streak).apply();
 

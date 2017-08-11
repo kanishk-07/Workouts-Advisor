@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -93,7 +92,7 @@ public class Profile extends AppCompatActivity {
         final SharedPreferences.Editor mEditor = mPreferences.edit();
 
         nameText = (EditText) findViewById(R.id.editText2);
-        nameText.setText(FirstRunActivity.user_name);
+        //nameText.setText(FirstRunActivity.user_name);
         nameText.setEnabled(false);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +117,6 @@ public class Profile extends AppCompatActivity {
                 mEditor.putString(getString(R.string.u_name),nameText.getText().toString()).apply();
             }
         });
-        //nameText.setText(getSharedPreferences("Profile", MODE_PRIVATE).getString("NAME", FirstRunActivity.user_name));
 
         weightText = (EditText) findViewById(R.id.editText3);
         weightText.setEnabled(false);
@@ -192,10 +190,6 @@ public class Profile extends AppCompatActivity {
                 //***Check Later***//
             }
         });
-
-        //editor.putString("NAME",nameText.getText().toString()).apply();
-        //editor.putString("WEIGHT",weightText.getText().toString()).apply();
-        //editor.putString("WAIST",waistText.getText().toString()).apply();
 
     }
 
