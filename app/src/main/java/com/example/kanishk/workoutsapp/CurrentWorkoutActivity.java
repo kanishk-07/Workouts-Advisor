@@ -1,10 +1,9 @@
 package com.example.kanishk.workoutsapp;
 
 import android.content.res.Resources;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.speech.tts.TextToSpeech;;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+
+;
 
 public class CurrentWorkoutActivity extends AppCompatActivity {
 
@@ -92,7 +93,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                 }
             };
             handler.postDelayed(runnable1,500);
-            
+
             final Runnable runnable2 = new Runnable() {
                 public void run() {
                     final Runnable runnable = new Runnable() {
@@ -110,7 +111,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -119,8 +120,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                 }
             };handler.postDelayed(runnable2,4000);
         }
-        
-        
+
+
 
         else if (position == 1) //Arm Circles
         {
@@ -180,7 +181,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -190,8 +191,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,4500);
 
         }
-        
-        
+
+
 
         else if (position == 2) //Arm Raises
         {
@@ -221,7 +222,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -230,8 +231,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                 }
             };handler.postDelayed(runnable2,3000);
         }
-        
-        
+
+
 
         else if (position == 3)  //Backward Lunges
         {
@@ -274,7 +275,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             } else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -284,8 +285,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,4000);
 
         }
-        
-        
+
+
 
         else if (position == 4) //Bicycle Crunches
         {
@@ -328,7 +329,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             } else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -338,8 +339,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,4000);
 
         }
-        
-        
+
+
 
         else if (position == 5)  //Bird Dog
         {
@@ -385,7 +386,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             } else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -424,7 +425,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -433,8 +434,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                 }
             };handler.postDelayed(runnable2,5000);
         }
-        
-        
+
+
 
         else if (position == 7) //Bridge
         {
@@ -460,7 +461,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -470,8 +471,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,2000);
 
         }
-        
-        
+
+
 
         else if (position == 8) //Burpees
         {
@@ -506,7 +507,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -516,8 +517,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,3500);
 
         }
-        
-        
+
+
 
         else if (position == 9) //Cobras
         {
@@ -556,7 +557,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             } else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -566,8 +567,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,3000);
 
         }
-        
-        
+
+
 
         else if (position == 10) //Plank
         {
@@ -593,7 +594,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -603,8 +604,8 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
             };handler.postDelayed(runnable2,3000);
 
         }
-        
-        
+
+
 
         else if (position == 11) //Push Ups
         {
@@ -636,7 +637,7 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
                             else {
                                 speaker.setSpeechRate(2.0f);
                                 speaker.speak("Relax!",TextToSpeech.QUEUE_FLUSH,null,null);
-                                toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CurrentWorkoutActivity.this, "Workout Completed", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
@@ -648,6 +649,12 @@ public class CurrentWorkoutActivity extends AppCompatActivity {
         
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 
     @Override

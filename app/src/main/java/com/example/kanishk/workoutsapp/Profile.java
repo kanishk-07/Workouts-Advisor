@@ -1,5 +1,7 @@
 package com.example.kanishk.workoutsapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -15,6 +17,7 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,12 +45,21 @@ public class Profile extends AppCompatActivity {
     Button btn3;
     Button btn4;
 
+    SharedPreferences prefs;
+    String user_name;
+    //SharedPreferences.Editor mEditor = prefs.edit();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        hideSoftKeyboard();
+        Log.d("Profile","62");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        prefs = this.getSharedPreferences(FirstRunActivity.NAME_PREFS,Context.MODE_PRIVATE);
+        final SharedPreferences.Editor mEditor1 = prefs.edit();
 
         ImageButton upbutton = (ImageButton)findViewById(R.id.go_up);
         upbutton.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +68,9 @@ public class Profile extends AppCompatActivity {
                 finish();
             }
         });
+        Log.d("Profile","65");
+        prefs = this.getSharedPreferences(FirstRunActivity.NAME_PREFS, Context.MODE_PRIVATE);
+        user_name = prefs.getString(FirstRunActivity.DISPLAY_NAME_KEY,"ghjk");
 
 
         btn2 = (Button) findViewById(R.id.button2);
@@ -92,7 +107,7 @@ public class Profile extends AppCompatActivity {
         final SharedPreferences.Editor mEditor = mPreferences.edit();
 
         nameText = (EditText) findViewById(R.id.editText2);
-        //nameText.setText(FirstRunActivity.user_name);
+        nameText.setText(user_name);
         nameText.setEnabled(false);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +128,7 @@ public class Profile extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                FirstRunActivity.user_name = nameText.getText().toString();
-                mEditor.putString(getString(R.string.u_name),nameText.getText().toString()).apply();
+                mEditor1.putString(FirstRunActivity.DISPLAY_NAME_KEY,nameText.getText().toString()).apply();
             }
         });
 
@@ -142,7 +156,9 @@ public class Profile extends AppCompatActivity {
                 editor.putString("WEIGHT", weightText.getText().toString()).apply();
             }
         });
+        Log.d("Profile","153");
         weightText.setText(getSharedPreferences("Profile", MODE_PRIVATE).getString("WEIGHT", "Weight"));
+        Log.d("Profile","155");
 
         waistText = (EditText) findViewById(R.id.editText4);
         waistText.setEnabled(false);
@@ -168,8 +184,11 @@ public class Profile extends AppCompatActivity {
                 editor.putString("WAIST", waistText.getText().toString()).apply();
             }
         });
+        Log.d("Profile","181");
         waistText.setText(getSharedPreferences("Profile", MODE_PRIVATE).getString("WAIST", "Waist"));
+        Log.d("Profile","183");
 
+        hideKeyboard(this);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -191,6 +210,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        hideSoftKeyboard();
     }
 
 
@@ -234,6 +254,24 @@ public class Profile extends AppCompatActivity {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory
                 .decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void hideSoftKeyboard() {
+        if(getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
 }

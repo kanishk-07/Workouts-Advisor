@@ -1,27 +1,25 @@
 package com.example.kanishk.workoutsapp;
 
 import android.content.Context;
-import android.content.Intent;;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
@@ -31,10 +29,12 @@ public class MainActivity extends AppCompatActivity
 
     //SQLiteDatabase myBase = this.openOrCreateDatabase("DATES",MODE_PRIVATE,null);
 
-    SharedPreferences mPreferences;
+    SharedPreferences prefs;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Log.d("LOG_TESTING","38");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -58,9 +58,20 @@ public class MainActivity extends AppCompatActivity
             finish();
             startActivity(IntentFirstRunAct);
         }
+        //Log.d("LOG_TESTING","62");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Log.d("LOG_TESTING","67");
+
+        prefs = this.getSharedPreferences(FirstRunActivity.NAME_PREFS,Context.MODE_PRIVATE);
+        userName = prefs.getString(FirstRunActivity.DISPLAY_NAME_KEY,"ghjk");
+        Log.d("FIrST_TESTING","Main"+userName);
+        Name = (TextView)findViewById(R.id.textView2);
+        Name.setText("Hey " +userName+",");
+
+        //Log.d("LOG_TESTING","71");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -72,14 +83,15 @@ public class MainActivity extends AppCompatActivity
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {
                         "kanishksharma809@gmail.com" });
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Regarding WorkoutsApp");
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,"This app is \n\n From,\n"+FirstRunActivity.user_name);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,"Hi I wanted to say something about the workouts app \n\n\n\n\n\n\n From,\n"+userName);
                 //emailIntent.setType("text/plain");
                 if (emailIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(emailIntent);
                     //Toast.makeText(MainActivity.this, "Mail Send, (^_^)", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(MainActivity.this, "Mail Sending failed (-_-)", Toast.LENGTH_SHORT).show();                }
+                    Toast.makeText(MainActivity.this, "Mail Sending failed (-_-)", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -90,6 +102,7 @@ public class MainActivity extends AppCompatActivity
                 goToWorkoutActivity();
             }
         });
+        //Log.d("LOG_TESTING","96");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,31 +111,33 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //Log.d("LOG_TESTING","105");
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor mEditor = mPreferences.edit();
+        //mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //SharedPreferences.Editor mEditor = mPreferences.edit();
 
-        String name;
-        name = mPreferences.getString(getString(R.string.u_name),"");
-//
+        //String name;
+        //name = mPreferences.getString(getString(R.string.u_name),"");
+
         //name = FirstRunActivity.prefs.getString("USERNAME","");
 
         //name = getSharedPreferences("myPrefs", Context.MODE_WORLD_READABLE).getString("USERNAME","");
+        //////////////////////////////
 
-        Name = (TextView)findViewById(R.id.textView2);//////////////////////////////
+        //String naam = "Hey "+userName+",";
+        //String naam = "Hey ".concat(userName).concat(",");
+        //Name.setText("Hey " +userName+",");
 
-        //String naam = "Hey "+name+",";
-        String naam = "Hey ".concat(name).concat(",");
-        Name.setText(naam);
+        //Log.d("LOG_TESTING","126");
 
         int prevDay = getSharedPreferences("Streak", MODE_PRIVATE).getInt("InstallationDay", 0);
         int prevYear = getSharedPreferences("Streak", MODE_PRIVATE).getInt("InstallationYear", 0);
 
         int Day = calendar.get(Calendar.DAY_OF_YEAR);
         int Year = calendar.get(Calendar.YEAR) + 1900;
-        //myBase.execSQL("INSERT INTO dates (day,month,year) VALUES ()");
         int streak = getSharedPreferences("Streak", MODE_PRIVATE).getInt("AcStreak", 0);
         if(Day == prevDay && Year == prevYear) { // && Month == prevMonth) {
 
@@ -143,6 +158,8 @@ public class MainActivity extends AppCompatActivity
         else
             streak = 0;
 
+        //Log.d("LOG_TESTING","153");
+
 
         getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("InstallationDay", Day).apply();
         getSharedPreferences("Streak", MODE_PRIVATE).edit().putInt("InstallationYear", Year).apply();
@@ -150,6 +167,8 @@ public class MainActivity extends AppCompatActivity
 
         TextView StreakView = (TextView) findViewById(R.id.StreakView);
         StreakView.setText(String.valueOf(streak));
+
+        //Log.d("LOG_TESTING","163");
 
     }
 
@@ -166,7 +185,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+         //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -177,7 +196,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.CalanderView) {
             Intent calander = new Intent(MainActivity.this,CalanderActivity.class);
@@ -211,7 +229,7 @@ public class MainActivity extends AppCompatActivity
                     "" });
             shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "WorkoutsApp");
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Hi,\n I found this app " +
-                    "'WorkoutsApp' \n\n From,\n"+FirstRunActivity.user_name);
+                    "'WorkoutsApp' \n\n From,\n"+userName);
             //emailIntent.setType("text/plain");
             startActivity(shareIntent);
         }
@@ -230,7 +248,8 @@ public class MainActivity extends AppCompatActivity
 //                        Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
 //            https://stackoverflow.com/questions/10816757/rate-this-app-link-in-google-play-store-app-on-the-phone/25121093
 //            }
-            Toast.makeText(MainActivity.this,"This app has not been published on PlayStore or any other App Market",Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,"This app has not been published on PlayStore or any other App Market (^_^)",
+                    Toast.LENGTH_LONG).show();
 
         }else if (id == R.id.nav_go_to_workouts_list) {
             goToWorkoutActivity();
@@ -249,13 +268,13 @@ public class MainActivity extends AppCompatActivity
         startActivity(go_work);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        String naam = "Hey "+mPreferences.getString(getString(R.string.u_name)+",","");
-        Name.setText(naam);
-        //Name.setText("Hey "+ mPreferences.getString(getString(R.string.u_name) +",",""));
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        String naam = "Hey "+prefs.getString(FirstRunActivity.DISPLAY_NAME_KEY+",","");
+//        Name.setText(naam);
+//        //Name.setText("Hey "+ mPreferences.getString(getString(R.string.u_name) +",",""));
+//    }
 
 }
 
